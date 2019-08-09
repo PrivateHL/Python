@@ -1,0 +1,155 @@
+程序：机器可以识别的机器指令。
+CS BS 区别于客户端的形式，BS资源主要存在的于服务器；
+Python 解释型、面对对象、动态数据类型的高级程序语言，py2.0 3.0不兼容
+
+IDLE：F5运行
+sublime Text 编辑器:小、轻量、运行速度快、拖文件到快捷方式打开、支持多种语言
+	Control + B快速运行
+CMD直接拖动文件进入cmd黑框，会直接显示路径，py后缀文件可以直接运行
+#开始：
+	进入Python交互解释器
+	>>> Python /$python3
+	>>> print("HELLO HL")
+	命名规则
+		大小写英文数字下划线、不能数字开头、大小写铭感、不能使用关键字
+	注释
+		#单行注释、'''多行注释
+	数据类型
+		整型、浮点数、字符串、布尔和空值
+		a = 12
+		b = 3.14	#浮点精确度，e代替10
+		c = "hello"	#字符串前用r可以取消转义
+		d = True	#and & or | not 
+		e = None	#空值
+	强制类型转换
+		int()	
+		float()
+		str()
+		bool()		#空值空字符数字0转换成false 否则true
+		
+	运算符
+		算术：	
+		>>> 2 + 2		加法
+		>>> 1 / 2		除法
+		>>> 1 // 2		整除
+		>>> 1 % 2		求余等价于x - ((x//y) * y)
+		>>> 2 ** 3		乘方
+		逻辑：
+		==、！=、>、<、>=、<=、and、or
+		赋值：
+		=、-=、+=、*=、/=、%=、**=、//=
+		赋值 a = 1;a,b,c = 1,2,3;
+
+		成员运算符：in ; not in ; 
+		身份运算符：is ; is not; 比较两个对象是否指向同一个内存地址
+			id(obj)	查看对象内存地址
+		位运算符	& ; | ; ^ ; ~ ; << ; >>
+Python起步：
+	Print函数
+		print(value,...,sep='',end='\n') value多个值，seq间隔符，end指指定结尾符
+	注释
+		单行 #	多行注释''' / """
+	显示换行	"\"+enter
+	单双引号	适用于简单的字符串 三个单双引号可以囊括复杂的单双引号打印
+	转义符		"\"
+	原始字符串	前缀"r"或者"R",转义字符不会生效
+	数学函数：
+		abs			  	绝对值
+		round(8.92,1) 	四舍五入
+		math.ceil		向上取整
+		math.floor		向下取整
+		math.trunc		截取整数位
+		math.pow(5,2)	幂运算
+数据类型操作
+	字符串 
+		+		连接
+		*n		连接n次
+		[n]		切片，取前几个字符
+		[-n]	切片倒数取子字符串
+		[n:m]	切片，取子字符串的位置，m空着表示开始到末尾
+		String.strip([chars])
+				chars为空 表示去掉字符串前后的空格符换行符制表符
+				不为空，去除指定的字符，去除前后在chars中的字符
+		String.lstrip()	只删除左边特定字符
+		String.rstrip() 只删除右边特定字符
+		String.startswith('')	是否以字符串开头
+		String.endwith('')		是否与字符串结尾
+		String.find('')			查找字符位置，找不到返回-1
+		String.index('')		与find相同，找不到会报错
+		Stirng.replace('','')	第二个字符串替换第一个字符串
+		String.count('')		字符串出现的位置
+		String.upper()			小写转大写
+		String.lower()			大写转小写
+		String.center(n,'-')	用-补齐String到长度为n,并放置到中间，统一长度使用
+		len(Stirng)				字符串长度
+		格式化:可以命名，使用字典匹配
+			%S	String 
+			%d	整数
+			%f	浮点数(默认六位小数) %.5f保留五位小数
+			{}	格式化字符串 'hello {}'.format('world')
+			format格式化函数
+				'name:{name},age:{}'.format(name = 'python',age = '16')
+	数据类型
+		整型
+			进制转换：
+					bin	转化二进制
+					oct 转化八进制
+					int 转换十进制
+					hex 转化十六进制
+					2e-5科学计数法
+			type方法，检测数字的类型，相除默认返回浮点型
+			复数
+					complex(n,m) 表示n+mj
+					complex(n,m).real 返回实数
+					complex(n,m).imag 返回虚数
+			bool	只有0和none值,空字符，空数组等空值为false 其余为true
+			isinstance(value,type)	检测值是否是type类型
+		列表:list:[]
+			一个列表可以包括不同数据类型
+			创建：list(),[],[1,2,3],['a',1,1.2,[1,2,3]]
+			取值：[][index],list[index]
+			相加：[1,2] + [3,4] ->[1,2,3,4]
+			相乘：[1,2] * 3	->[1,2,1,2,1,2]
+			list.count(x)	计数
+			list.append(x)	尾部追加值
+			list.extend(l)	尾部追加集合
+			list.index(x)	查找位置
+			list.insert(index,obj)	插入指定位置
+			list.pop()		删除并返回最后一个成员
+			list.remove(x)	删除
+			list.reverse()	从尾到头反转排序
+			list.sort()		排序(成员可排序，否则报错)
+		元组:tuple:() 一种不可变的特殊列表
+			创建：(),tuple(),(1,),(2,3)
+			访问：()[index],tuple[index]
+			len(tuple)	返回元组数量
+			max(tuple)	返回元组最大值
+			min(tuple)	返回元组最小值
+			tuple(list)  将序列转为元组
+		字典：dict：{} 键值对形式存在，无序，键值不可变
+			创建：{},dict(),{"n":5,"m":10},
+			访问：dict[key]	不存在key报错
+			更新：dict[key] = value
+			删除：del dict[key],dict.clear(),del dict
+			PS：键值必须为不可变数据类型，不能为列表类型
+			dict.copy()		复制
+			dict.get(key,default=None)
+			dict.items()
+			dict.keys()
+			dict.values()
+			dict.pop(key,[defalut])
+			dict.popitem
+			dict.update({key:value})	从另外一个字典更新成员，存在覆盖，不存在创建
+			dict.setdefault(key,default=None)	存在返回值，不存在则建立key:default成员
+		集合：set：{} 	 无序 唯一 不重复
+			创建: set(),{1,2,3},set(list)——去重list的集合
+			len(set)	查看长度
+			查看是否存在 value in set
+			集合差集 set1 - set2
+			集合交集 set1 & set2
+			集合并集 set1 | set2
+	变量	存在电脑内存中的值
+		
+		值类型为不可变，直接存在值在对战中，引用类型为可变，堆栈中存在的是指针。
+		
+Python高级特性整理：

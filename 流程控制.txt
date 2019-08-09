@@ -1,0 +1,70 @@
+﻿python使用缩进作为语句分组的方法，四个空格
+	if: elif: else: tab缩进表示大括号
+	一般 for ... in
+	字典迭代 for value in d.values()
+		     for k, v in d.items()
+	需要下标时：>>> for i, value in enumerate(['A', 'B', 'C']):
+	判断对象是否可以迭代
+		>>>from collections import Iterable
+		>>> isinstance(对象, Iterable) # str是否可迭代
+函数 参数
+	必选参数
+	默认参数，默认参数必须为不可变对象，默认参数必须在后 >>> def power(x, n=2):
+	可变参数，前面增加* 自动组装成tuple
+		def参数加*表示接受变长数组对象>>> def calc(*numbers):
+		调用函数前加*，表示当前数组参数展开作为可变参数调用 >> calc(*nums) 等同于>>>calc(nums[0],num[1],...)
+	关键字参数，前面增加**自动组装成一个字典dict
+		def函数 >>>def person(name,age,**kw):  #不会限制字典参数
+			限制关键字参数，只接收city和job作为关键字参数
+				>>>def person(name, age, *, city, job):  ##限制字典参数只能为city job
+				>>>def person(name, age, *args, city, job):
+		调用参数 >>>person('Bob', 35, city='Beijing')
+				 >>>extra = {'city': 'Beijing', 'job': 'Engineer'}
+				 >>>person('Jack', 24, **extra) #获取的是extra的一份拷贝
+	命名关键字参数，传入任意不受限制的关键字参数
+		def函数 >>>def person(name,age,*, city,job): #只接受city,job作为关键参数
+	参数组合顺序 必选参数、默认参数、可变参数、命名关键字参数和关键字参数
+函数递归
+	递归 EG: >>>def fact(n):
+					if n==1:
+						return 1
+					return n * fact(n - 1)
+	尾递归函数,优化递归，只用一个栈，循环即是
+			在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。
+			 >>>def fact(n):
+					return fact_iter(n, 1)
+
+				def fact_iter(num, product):
+					if num == 1:
+						return product
+					return fact_iter(num - 1, num * product)
+	递归深度设置限制>>>	import sys
+						sys.setrecursionlimit(100)
+    PS：有个连串赋值的便捷写法
+        a, b = b, a + b     意识为等号左右的挨个匹配赋值相等于 a=b;b=a+b;连写
+python语言的高级特性：
+	切片、迭代、列表生成式、生成器和迭代器。
+	切片：L[x,y], 	#-1表示倒数第一个
+	迭代：	for value in list
+		for value in dict.values()
+		for k,v in dict.items()
+		isinstance('abc', Iterable)#判断是否可以迭代
+		for i, value in enumerate(list)#enumerate变成可索引对象，i取下标
+		 for x, y in [(1, 1), (2, 4), (3, 9)] #同时迭代两个对象也可以
+	列表生成器： 
+		list(range(1,11)) #生成1到10的list
+		[x*x for x in range(1,11)] # 这样的写法可以用在很多地方，一行解决循环
+		[ 返回值 for 值 in 集合 if (筛选值)] #后面可以接if筛选值
+		[x * x for x in range(1, 11) if x % 2 == 0] #筛选出仅偶数的平方
+	生成器：generator保存的是算法，不是值 一边循环一边计算，节省大量的空间
+		标准写法为列表的[] 替换为(),生成器需要调用next()获取下一个值，用for也可以，遇到StopIteration错误会返回
+		函数定义中包含yield关键字，那么表示为一个生成器 
+		特点是：在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行
+    迭代器：
+        可以直接作用于for循环的对象统称为可迭代对象：Iterable
+            包括：一类是集合数据类型，如list、tuple、dict、set、str等，另一类是生成器
+        可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator（懒惰的循环器）
+            生成器就是一种迭代器，其他的可迭代对象需要使用iter()转换生成迭代器
+
+函数式编程：
+    
